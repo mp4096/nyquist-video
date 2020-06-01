@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+ipdb = "==0.13.2"
+ipython = "==7.15.0"
+
+[packages]
+matplotlib = "==3.2.1"
+numpy = "==1.18.4"
+tomlkit = "==0.6.0"
+
+[requires]
+python_version = "3.7"
