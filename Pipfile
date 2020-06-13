@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+black = "==19.10b0"
 ipdb = "==0.13.2"
 ipython = "==7.15.0"
 
