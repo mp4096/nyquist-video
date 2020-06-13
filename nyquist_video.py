@@ -19,11 +19,14 @@ class Ctx:
         self.response_vec = None
         self.ray_angle = None
         self.angle_change = None
-        assert (
-            not self.output_dir.exists()
-        ), f"Output dir '{self.output_dir}' exists. Please remove it before proceeding"
-        logging.info("Creating output dir '%s'", self.output_dir)
-        self.output_dir.mkdir(parents=True)
+        if self.output_dir.exists():
+            logging.warning(
+                f"Output dir '%s' exists. Existing files will be overwritten",
+                self.output_dir,
+            )
+        else:
+            logging.info("Creating output dir '%s'", self.output_dir)
+            self.output_dir.mkdir(parents=True)
 
     def compute_points(self):
         self.frequency_vec = np.logspace(
@@ -41,7 +44,7 @@ class Ctx:
             self.frequency_vec * (-1.0j) * self.config["xfer_fun"]["time_delay"]
         )
 
-    def plot_frame(self, idx: int):
+    def plot_frame(self, idx: int, filename: str):
         fig, ax = plt.subplots(figsize=self.config["plotting"]["fig_size"])
         plt.plot(
             self.response_vec.real,
@@ -88,7 +91,6 @@ class Ctx:
         )
         plt.title(title)
         ax.add_collection(pc)
-        filename = self.config["plotting"]["export"]["frame_prefix"] + f"{idx:04d}.png"
         fig.savefig(
             self.output_dir / filename,
             bbox_inches="tight",
@@ -118,8 +120,14 @@ class Ctx:
             self.config["animation"]["num_frames"],
             dtype=int,
         )
-        for i in tqdm(indices):
-            self.plot_frame(i)
+        for running_idx, frequency_idx in tqdm(
+            enumerate(indices), total=int(self.config["animation"]["num_frames"])
+        ):
+            filename = (
+                self.config["plotting"]["export"]["frame_prefix"]
+                + f"{running_idx:06d}.png"
+            )
+            self.plot_frame(frequency_idx, filename)
 
 
 if __name__ == "__main__":
