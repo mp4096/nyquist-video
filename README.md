@@ -9,3 +9,9 @@
 $ pipenv shell
 $ python nyquist_video.py example_h8_1.toml
 ```
+
+# Creating video
+
+```
+$ ffmpeg -framerate 24 -i "/tmp/nyquist_h8_1/frame_%06d.png" "/tmp/nyquist_h8_1/video.mp4"
+```
