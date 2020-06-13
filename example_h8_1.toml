@@ -1,10 +1,10 @@
 [xfer_fun]
-numerator = [3.375, 10.125, 6.75]
-denominator = [1.0, -6.5, 10.0, -4.5]
+numerator = [40.0, 80.0, 40.0]
+denominator = [1.0, -19.86, 98.6, 0.0]
 time_delay = 0.0
 
 [frequency_range]
-log10_range_lim = [-3.0, 3.0]
+log10_range_lim = [-3.5, 3.5]
 num_points = 1500
 
 [plotting]
@@ -18,7 +18,7 @@ axis_equal = true
 grid = true
 
 [plotting.export]
-output_dir = "/tmp/nyquist_h8_2"
+output_dir = "/tmp/nyquist_h8_1"
 frame_prefix = "frame_"
 dpi = 300
 pad_inches = 0.25
@@ -37,4 +37,4 @@ alpha = 0.4
 color = "#e37222"  # tum orange
 
 [animation]
-num_frames = 500
+num_frames = 250
