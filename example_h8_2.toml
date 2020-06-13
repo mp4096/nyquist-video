@@ -1,0 +1,34 @@
+[xfer_fun]
+numerator = [3.375, 10.125, 6.75]
+denominator = [1.0, -6.5, 10.0, -4.5]
+time_delay = 0.0
+
+[frequency_range]
+log10_range_lim = [-3.0, 3.0]
+num_points = 500
+
+[plotting]
+fig_size = [7.5, 4.0]
+xlim = [-2.0, 2.0]
+xlabel = "Re(Fₒ(jω))"
+ylim = [-2.0, 2.0]
+ylabel = "Im(Fₒ(jω))"
+pad_inches = 0.25
+dpi = 300
+axis_equal = true
+grid = true
+
+[plotting.response]
+label = "Fₒ(jω)"
+color = "#0065bd"  # tum blue
+
+[plotting.ray]
+label = "Fahrstrahl"
+color = "#e37222"  # tum orange
+
+[plotting.wedge]
+radius = 0.5
+color = "#e37222"  # tum orange
+
+[animation]
+num_frames = 30
